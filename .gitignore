@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/OnlineBakeryOrderingSystem/obj
+/.vs/OnlineBakeryOrderingSystem/v15
+/OnlineBakeryOrderingSystem/bin/Debug/netcoreapp2.1
