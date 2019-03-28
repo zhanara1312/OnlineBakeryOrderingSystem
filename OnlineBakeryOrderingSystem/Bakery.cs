@@ -4,6 +4,12 @@ using System.Text;
 
 namespace OnlineBakeryOrderingSystem
 {
+    enum BakeryProduct
+    {
+        Bread,
+        Cakes,
+        Cookies 
+    }
     class Bakery
     {
         /// <summary>
@@ -11,16 +17,17 @@ namespace OnlineBakeryOrderingSystem
         /// </summary>
         #region Statics
         private static int lastCustomerNumber = 0;
+        private static decimal productItemPrice = 5;
         #endregion
 
             #region Properties
             /// <summary>
             /// Menu, Products like bread
             /// </summary>
-            public string Bread { get; private set; }
+            public BakeryProduct BakeryProduct { get; set; } 
             public Decimal ItemPrice { get; private set; }
         /// <summary>
-        /// Customer unique number that is assigned when customer orders bread online.
+        /// Customer unique number that is assigned when customer creates a profile and orders bread online.
         /// </summary>
             public int CustomerNumber { get; private set; }
             public string CustomerName { get; set; }
@@ -38,6 +45,7 @@ namespace OnlineBakeryOrderingSystem
                 //CustomerNumber = ++lastCustomerNumber;
                 CustomerNumber = ++lastCustomerNumber;
                 Date = DateTime.Now;
+                ItemPrice = productItemPrice;
             }
             #endregion
 

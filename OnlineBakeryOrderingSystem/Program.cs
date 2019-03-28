@@ -6,11 +6,55 @@ namespace OnlineBakeryOrderingSystem
     {
         static void Main(string[] args)
         {
-            var a1 = BakeryOrder.CreateOrder("Todd", "118 W Smith St, Seattle, WA, 98119", "test@test.com","12345678910",1);
-            Console.WriteLine($"Menu:{a1.Bread}, IP:{a1.ItemPrice}, CN: {a1.CustomerNumber}, D:{a1.Date}");
-            var a2 = BakeryOrder.CreateOrder("Ivan", "5235, 22nd Ave NE, Seattle, WA, 98105", "test1@test.com","10987654321",2);
-            Console.WriteLine($"Menu:{a2.Bread}, IP:{a2.ItemPrice}, CN: {a2.CustomerNumber}, D:{a1.Date}");
+            Console.WriteLine("***************");
+            Console.WriteLine("Welcome to our bakery!");
+            Console.WriteLine("***************");
+            while (true)
+            {
+                Console.WriteLine("0. Exit");
+                Console.WriteLine("1. Create a profile");
+                Console.WriteLine("2. Order online");
+                Console.WriteLine("3. Print my order");
+                Console.Write("Select an option: ");
+                var option = Console.ReadLine();
+                switch (option)
+                {
+                    case "0":
+                        Console.WriteLine("Thank you for visiting the bakery!");
+                        return;
+                    case "1":
+                        Console.Write("Customer name: ");
+                        var customerName = Console.ReadLine();
 
+                        Console.Write("Customer Address: ");
+                        var customerAddress = Console.ReadLine();
+
+                        Console.Write("Customer Email Address: ");
+                        var customerEmailAddress = Console.ReadLine();
+
+                        Console.Write("Customer Bank account number : ");
+                        var customerBankAccountNumber = Console.ReadLine();
+
+                        var bakeryProducts = Enum.GetNames(typeof(BakeryProduct));
+                        for (int i = 0; i < bakeryProducts.Length; i++)
+                        {
+                            Console.WriteLine($"{i}. {bakeryProducts[i]}");
+                        }
+                        Console.Write("Bakery product: ");
+                        var bakeryProduct = Enum.Parse<BakeryProduct>(Console.ReadLine());
+
+                        Console.Write("Number of order: ");
+                        var order = Convert.ToInt32(Console.ReadLine());
+
+                        var a1 = BakeryOrder.CreateOrder(customerName, customerAddress, customerEmailAddress, customerBankAccountNumber, bakeryProduct, order);
+                        Console.WriteLine($"Menu: {a1.BakeryProduct}, IP: {a1.ItemPrice}, CD: {a1.Date}, NO: {a1.NumberOfOrder}, CN: {a1.CustomerName}, CA: {a1.CustomerAddress}, EA: {a1.CustomerEmailAddress}, CBA: {a1.CustomerBankAccountNumber}");
+                        break;
+                    case "2":
+                    case "3":
+                    default:
+                        break;
+                }
+            }
         }
     }
-}
+} 
