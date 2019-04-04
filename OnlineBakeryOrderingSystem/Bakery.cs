@@ -57,7 +57,7 @@ namespace OnlineBakeryOrderingSystem
             /// <param name="NumberOfOrder">Amount with Sales tax included</param>
             public void Order(int NumberOfOrder)
             {
-                //ItemPrice = Price * NumberOfOrder
+                //ItemPrice = ItemPrice * NumberOfOrder
                 ItemPrice = ItemPrice *= NumberOfOrder; 
             }
         #endregion
