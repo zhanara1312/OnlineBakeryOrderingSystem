@@ -23,31 +23,50 @@ namespace OnlineBakeryOrderingSystem
                         Console.WriteLine("Thank you for visiting the bakery!");
                         return;
                     case "1":
-                        Console.Write("Customer name: ");
-                        var customerName = Console.ReadLine();
-
-                        Console.Write("Customer Address: ");
-                        var customerAddress = Console.ReadLine();
-
-                        Console.Write("Customer Email Address: ");
-                        var customerEmailAddress = Console.ReadLine();
-
-                        Console.Write("Customer Bank account number : ");
-                        var customerBankAccountNumber = Console.ReadLine();
-
-                        var bakeryProducts = Enum.GetNames(typeof(BakeryProduct));
-                        for (int i = 0; i < bakeryProducts.Length; i++)
+                        try
                         {
-                            Console.WriteLine($"{i}. {bakeryProducts[i]}");
+                            Console.Write("Customer name: ");
+                            var customerName = Console.ReadLine();
+
+                            Console.Write("Customer Address: ");
+                            var customerAddress = Console.ReadLine();
+
+                            Console.Write("Customer Email Address: ");
+                            var customerEmailAddress = Console.ReadLine();                    
+
+                            Console.Write("Customer Bank account number : ");
+                            var customerBankAccountNumber = Console.ReadLine();
+
+                            var bakeryProducts = Enum.GetNames(typeof(BakeryProduct));
+                            for (int i = 0; i < bakeryProducts.Length; i++)
+                            {
+                                Console.WriteLine($"{i}. {bakeryProducts[i]}");
+                            }
+                            Console.Write("Bakery product: ");
+                            var bakeryProduct = Enum.Parse<BakeryProduct>(Console.ReadLine());
+
+                            Console.Write("Number of order: ");
+                            var order = Convert.ToInt32(Console.ReadLine());
+
+                            var a1 = BakeryOrder.CreateOrder(customerName, customerAddress, customerEmailAddress, customerBankAccountNumber, bakeryProduct, order);
+                            Console.WriteLine($"Menu: {a1.BakeryProduct}, IP: {a1.ItemPrice}, CD: {a1.Date}, NO: {a1.NumberOfOrder}, CN: {a1.CustomerName}, CA: {a1.CustomerAddress}, EA: {a1.CustomerEmailAddress}, CBA: {a1.CustomerBankAccountNumber}");
                         }
-                        Console.Write("Bakery product: ");
-                        var bakeryProduct = Enum.Parse<BakeryProduct>(Console.ReadLine());
-
-                        Console.Write("Number of order: ");
-                        var order = Convert.ToInt32(Console.ReadLine());
-
-                        var a1 = BakeryOrder.CreateOrder(customerName, customerAddress, customerEmailAddress, customerBankAccountNumber, bakeryProduct, order);
-                        Console.WriteLine($"Menu: {a1.BakeryProduct}, IP: {a1.ItemPrice}, CD: {a1.Date}, NO: {a1.NumberOfOrder}, CN: {a1.CustomerName}, CA: {a1.CustomerAddress}, EA: {a1.CustomerEmailAddress}, CBA: {a1.CustomerBankAccountNumber}");
+                        catch (ArgumentNullException nx)
+                        {
+                            Console.WriteLine($"Emaill Address Error - {nx.Message} - Please try again!");
+                        }
+                        catch (ArgumentException ax)
+                        {
+                            Console.WriteLine($"Bakery Product Error - {ax.Message} - Please try again!");
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Number of Order error - Please provide a valid amount. Try again!");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Sorry something went wrong - {ex.Message} - please try again");
+                        }
                         break;
                     case "2":
                         PrintAllBakeries();
