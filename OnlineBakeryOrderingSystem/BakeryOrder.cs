@@ -7,9 +7,7 @@ namespace OnlineBakeryOrderingSystem
 {
     static class BakeryOrder
     {
-        private static List<Bakery> bakeries = new List<Bakery>();
-        private static List<Transaction> transactions = new List<Transaction>();
-
+        private static BakeryContext db = new BakeryContext();
         /// <summary>
         /// Creates an account in the bank
         /// </summary>
@@ -42,19 +40,30 @@ namespace OnlineBakeryOrderingSystem
             };
             if (numberOfOrder > 0) 
             {
-                a1.Order(numberOfOrder); 
+                a1.Order(numberOfOrder);               
             }
+            db.Bakeries.Add(a1);
+            db.SaveChanges();
             return a1;
         }
 
-        public static IEnumerable<Bakery> GetBakeryOrderForUser()
+        public static IEnumerable<Bakery> GetBakeryOrderForUser(string customerEmailAddress)
         {
-            return bakeries;
+            return db.Bakeries.Where(a => a.CustomerEmailAddress == customerEmailAddress);
         }
+
+        public static IEnumerable<Transaction>
+            GetTransactionsForCustomerNumber(Int32 customerNumber)
+        {
+            return db.Transactions
+                .Where(t => t.CustomerNumber == customerNumber)
+                .OrderByDescending(t => t.TransactionDate);
+        }
+
         private static Bakery GetBakeryOrderByCustomerNumber
             (Int32 customerNumber)
         {
-            var bakery = bakeries.SingleOrDefault(a => a.CustomerNumber == customerNumber);
+            var bakery = db.Bakeries.SingleOrDefault(a => a.CustomerNumber == customerNumber);
             if (bakery == null)
             {
                 throw new ArgumentNullException("bakery", "Customer number is invalid!");
@@ -75,8 +84,9 @@ namespace OnlineBakeryOrderingSystem
                 CustomerNumber = customerNumber
             };
 
-            transactions.Add(transaction);
-    }
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
+        }
 
     }
 }

@@ -15,6 +15,7 @@ namespace OnlineBakeryOrderingSystem
                 Console.WriteLine("1. Create a profile");
                 Console.WriteLine("2. Order online");
                 Console.WriteLine("3. Print my order");
+                Console.WriteLine("4. Print my transactions");
                 Console.Write("Select an option: ");
                 var option = Console.ReadLine();
                 switch (option)
@@ -74,14 +75,32 @@ namespace OnlineBakeryOrderingSystem
                     case "3":
                         PrintAllBakeries();
                         break;
+                    case "4":
+                        PrintAllTransactions();
+                        break;
                     default:
                         break;
                 }
             }
         }
+
+        private static void PrintAllTransactions()
+        {
+            PrintAllBakeries();
+            Console.Write("Customer number: ");
+            var customerNumber = Convert.ToInt32(Console.ReadLine());
+            var transactions = BakeryOrder.GetTransactionsForCustomerNumber(customerNumber);
+            foreach (var transaction in transactions)
+            {
+                Console.WriteLine($"Id: {transaction.TransactionId}, Date: {transaction.TransactionDate}, Type: {transaction.TransactionType}, Amount: {transaction.NumberOfOrder}");
+            }
+        }
+
         private static void PrintAllBakeries()
         {
-            var bakeries = BakeryOrder.GetBakeryOrderForUser();
+            Console.Write("Email Address: ");
+            var customerEmailAddress = Console.ReadLine();
+            var bakeries = BakeryOrder.GetBakeryOrderForUser(customerEmailAddress);
             foreach (var bakery in bakeries)
             {
                 Console.WriteLine($"Menu: {bakery.BakeryProduct}, IP: {bakery.ItemPrice}, CD: {bakery.Date}, NO: {bakery.NumberOfOrder}, CN: {bakery.CustomerName}, CA: {bakery.CustomerAddress}, EA: {bakery.CustomerEmailAddress}, CBA: {bakery.CustomerBankAccountNumber}");

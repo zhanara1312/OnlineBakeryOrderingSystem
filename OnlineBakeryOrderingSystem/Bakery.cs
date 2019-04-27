@@ -16,7 +16,6 @@ namespace OnlineBakeryOrderingSystem
         /// Online Bakery Ordering System. 
         /// </summary>
         #region Statics
-        private static int lastCustomerNumber = 0;
         private static decimal productItemPrice = 5;
         #endregion
 
@@ -41,9 +40,6 @@ namespace OnlineBakeryOrderingSystem
             #region Constructor
             public Bakery()
             {
-                //lastCustomerNumber++;
-                //CustomerNumber = ++lastCustomerNumber;
-                CustomerNumber = ++lastCustomerNumber;
                 Date = DateTime.Now;
                 ItemPrice = productItemPrice;
             }
