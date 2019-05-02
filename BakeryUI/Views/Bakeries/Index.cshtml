@@ -1,0 +1,77 @@
+﻿@model IEnumerable<OnlineBakeryOrderingSystem.Bakery>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BakeryProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerEmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerBankAccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakeryProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerEmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerBankAccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CustomerNumber">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CustomerNumber">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CustomerNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

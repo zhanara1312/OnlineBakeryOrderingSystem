@@ -4,13 +4,13 @@ using System.Text;
 
 namespace OnlineBakeryOrderingSystem
 {
-    enum BakeryProduct
+    public enum BakeryProduct
     {
         Bread,
         Cakes,
         Cookies 
     }
-    class Bakery
+    public class Bakery
     {
         /// <summary>
         /// Online Bakery Ordering System. 

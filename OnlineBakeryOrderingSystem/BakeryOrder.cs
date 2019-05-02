@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OnlineBakeryOrderingSystem
 {
-    static class BakeryOrder
+    public static class BakeryOrder
     {
         private static BakeryContext db = new BakeryContext();
         /// <summary>

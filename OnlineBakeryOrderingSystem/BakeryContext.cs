@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OnlineBakeryOrderingSystem
 {
-    class BakeryContext : DbContext
+    public class BakeryContext : DbContext
     {
         public DbSet<Bakery> Bakeries { get; set; }
         public DbSet<Transaction> Transactions { get; set; }

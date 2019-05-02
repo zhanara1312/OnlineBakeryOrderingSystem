@@ -1,0 +1,66 @@
+﻿@model OnlineBakeryOrderingSystem.Bakery
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bakery</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BakeryProduct)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BakeryProduct)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerEmailAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerEmailAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerBankAccountNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerBankAccountNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfOrder)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfOrder)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CustomerNumber">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

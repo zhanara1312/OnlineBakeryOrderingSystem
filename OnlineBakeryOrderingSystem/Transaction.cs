@@ -4,12 +4,12 @@ using System.Text;
 
 namespace OnlineBakeryOrderingSystem
 {
-    enum TransactionType
+    public enum TransactionType
     {
         Credit,
         Debit
     }
-    class Transaction
+    public class Transaction
     {
         public int TransactionId { get; set; }
         public DateTime TransactionDate { get; set; }
