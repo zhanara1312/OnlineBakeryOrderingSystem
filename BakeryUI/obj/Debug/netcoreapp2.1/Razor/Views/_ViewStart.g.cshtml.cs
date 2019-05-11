@@ -23,8 +23,13 @@ using BakeryUI.Models;
 
 #line default
 #line hidden
+#line 4 "C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\Views\_ViewImports.cshtml"
+using OnlineBakeryOrderingSystem;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9d7728e23b2bfacaf20da31ad19c811fc19ff94", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"893b6de201680f95aa27ed6f25e3ae7709b2f18e", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

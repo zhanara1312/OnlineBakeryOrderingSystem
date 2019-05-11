@@ -23,8 +23,13 @@ using BakeryUI.Models;
 
 #line default
 #line hidden
+#line 4 "C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\Views\_ViewImports.cshtml"
+using OnlineBakeryOrderingSystem;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"15fd1e6efce83fcf6a17808569d8234ae9928ebb", @"/Views/Bakeries/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9d7728e23b2bfacaf20da31ad19c811fc19ff94", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"893b6de201680f95aa27ed6f25e3ae7709b2f18e", @"/Views/_ViewImports.cshtml")]
     public class Views_Bakeries_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<OnlineBakeryOrderingSystem.Bakery>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "hidden", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -228,12 +233,12 @@ using BakeryUI.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n    \r\n    ");
             EndContext();
             BeginContext(1718, 219, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1da716e124b345df853a32b02f723083", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e51d731685a484990f0bb872617f422", async() => {
                 BeginContext(1744, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(1754, 48, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9b83e5fe02dc42cea8f554eae9008966", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9a7f6224a13b4662aefc5aa92d63350f", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -258,7 +263,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 WriteLiteral("\r\n        <input type=\"submit\" value=\"Delete\" class=\"btn btn-default\" /> |\r\n        ");
                 EndContext();
                 BeginContext(1886, 38, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98c63fbeda08458da57c0838df2a0afa", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fab8b6cbe8944e81aa446c4dc4c573cd", async() => {
                     BeginContext(1908, 12, true);
                     WriteLiteral("Back to List");
                     EndContext();

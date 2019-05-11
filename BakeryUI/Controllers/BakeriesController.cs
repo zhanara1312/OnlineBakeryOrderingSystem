@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OnlineBakeryOrderingSystem;
 
 namespace BakeryUI.Controllers
+    
 {
+    [Authorize]
     public class BakeriesController : Controller
     {
         private readonly BakeryContext _context;
@@ -21,7 +24,7 @@ namespace BakeryUI.Controllers
         // GET: Bakeries
         public async Task<IActionResult> Index()
         {
-            return View(BakeryOrder.GetBakeryOrderForUser("jen@gmail.com"));
+            return View(BakeryOrder.GetBakeryOrderForUser(HttpContext.User.Identity.Name));
         }
 
         // GET: Bakeries/Details/5
@@ -32,8 +35,8 @@ namespace BakeryUI.Controllers
                 return NotFound();
             }
 
-            var bakery = await _context.Bakeries
-                .FirstOrDefaultAsync(m => m.CustomerNumber == id);
+            var account = BakeryOrder.GetBakeryOrderByCustomerNumber(id.Value);
+            object bakery = null;
             if (bakery == null)
             {
                 return NotFound();
@@ -53,7 +56,7 @@ namespace BakeryUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BakeryProduct,ItemPrice,CustomerNumber,CustomerName,CustomerAddress,CustomerEmailAddress,CustomerBankAccountNumber,NumberOfOrder,Date")] Bakery bakery)
+        public async Task<IActionResult> Create([Bind("BakeryProduct,CustomerName,CustomerEmailAddress,CustomerBankAccountNumber,NumberOfOrder")] Bakery bakery)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +75,7 @@ namespace BakeryUI.Controllers
                 return NotFound();
             }
 
-            var bakery = await _context.Bakeries.FindAsync(id);
+            var bakery = BakeryOrder.GetBakeryOrderByCustomerNumber(id.Value);
             if (bakery == null)
             {
                 return NotFound();
@@ -85,7 +88,7 @@ namespace BakeryUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BakeryProduct,ItemPrice,CustomerNumber,CustomerName,CustomerAddress,CustomerEmailAddress,CustomerBankAccountNumber,NumberOfOrder,Date")] Bakery bakery)
+        public async Task<IActionResult> Edit (int id, [Bind("BakeryProduct,CustomerName,CustomerEmailAddress,CustomerBankAccountNumber,NumberOfOrder")] Bakery bakery)
         {
             if (id != bakery.CustomerNumber)
             {
@@ -96,8 +99,7 @@ namespace BakeryUI.Controllers
             {
                 try
                 {
-                    _context.Update(bakery);
-                    await _context.SaveChangesAsync();
+                    BakeryOrder.UpdateBakery(bakery);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

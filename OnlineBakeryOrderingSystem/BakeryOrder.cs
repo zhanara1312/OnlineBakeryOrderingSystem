@@ -20,8 +20,8 @@ namespace OnlineBakeryOrderingSystem
         /// <returns>Newly created order</returns>
         /// <exception cref="ArgumentNullException" />
         public static Bakery CreateOrder
-            (string customerName, string customerAddress, string customerEmailAddress, string customerBankAccountNumber,
-             BakeryProduct bakeryProduct, int numberOfOrder)
+            (BakeryProduct bakeryProduct, string customerName, string customerEmailAddress, string customerBankAccountNumber,
+             int numberOfOrder = 0)
         {
             if (string.IsNullOrEmpty(customerEmailAddress)
                 || string.IsNullOrWhiteSpace(customerEmailAddress))
@@ -60,7 +60,7 @@ namespace OnlineBakeryOrderingSystem
                 .OrderByDescending(t => t.TransactionDate);
         }
 
-        private static Bakery GetBakeryOrderByCustomerNumber
+        public static Bakery GetBakeryOrderByCustomerNumber
             (Int32 customerNumber)
         {
             var bakery = db.Bakeries.SingleOrDefault(a => a.CustomerNumber == customerNumber);
@@ -70,6 +70,18 @@ namespace OnlineBakeryOrderingSystem
             }
             return bakery;
         }
+
+        public static Bakery UpdateBakery(Bakery updatedBakery)
+        {
+            var oldBakery =
+                GetBakeryOrderByCustomerNumber(updatedBakery.CustomerNumber);
+            oldBakery.CustomerEmailAddress = updatedBakery.CustomerEmailAddress;
+            oldBakery.BakeryProduct = updatedBakery.BakeryProduct;
+            db.SaveChanges();
+
+            return oldBakery;
+        }
+
         public static void Order(int customerNumber, int NumberOfOrder)
         {
             Bakery bakery = GetBakeryOrderByCustomerNumber(customerNumber);
