@@ -71,7 +71,7 @@ using OnlineBakeryOrderingSystem;
             WriteLiteral("\r\n<h2>Index</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(127, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "899f8e9fee76416da9ee4dac6e48f60e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "37d34943f56e42cc833e9b5336381e6f", async() => {
                 BeginContext(150, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -261,7 +261,7 @@ using OnlineBakeryOrderingSystem;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(2053, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f567c058af24cb38f6b6ce4242b8eb3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07cde5c2e2aa4ce59a1caea12529fdf5", async() => {
                 BeginContext(2110, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -296,7 +296,7 @@ using OnlineBakeryOrderingSystem;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(2138, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a72822b2539b4560b58900bc73dc56f0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "399365429e544905aa8dfee61e33448d", async() => {
                 BeginContext(2198, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -331,7 +331,7 @@ using OnlineBakeryOrderingSystem;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(2229, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee352762cbd84597b0cc382a2feed2bc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18891004338b4a078231dfd8dbad378d", async() => {
                 BeginContext(2288, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

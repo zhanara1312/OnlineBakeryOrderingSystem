@@ -229,7 +229,7 @@ using OnlineBakeryOrderingSystem;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1681, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "95ebd822e02d460c8df6d73bc2e8a490", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3dbf150f12d54d77bdc33121be7e8b6b", async() => {
                 BeginContext(1739, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -264,7 +264,7 @@ using OnlineBakeryOrderingSystem;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(1755, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "80676be24407499daf8c153e86e46db4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "981c6afebeef42f49f56123486eea40c", async() => {
                 BeginContext(1777, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

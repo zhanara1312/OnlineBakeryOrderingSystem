@@ -35,8 +35,7 @@ namespace BakeryUI.Controllers
                 return NotFound();
             }
 
-            var account = BakeryOrder.GetBakeryOrderByCustomerNumber(id.Value);
-            object bakery = null;
+            var bakery = BakeryOrder.GetBakeryOrderByCustomerNumber(id.Value);
             if (bakery == null)
             {
                 return NotFound();
@@ -56,12 +55,11 @@ namespace BakeryUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BakeryProduct,CustomerName,CustomerEmailAddress,CustomerBankAccountNumber,NumberOfOrder")] Bakery bakery)
+        public async Task<IActionResult> Create ([Bind("BakeryProduct,CustomerName,CustomerEmailAddress,NumberOfOrder")] Bakery bakery)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bakery);
-                await _context.SaveChangesAsync();
+                BakeryOrder.CreateBakery (bakery.BakeryProduct, bakery.CustomerName, bakery.CustomerEmailAddress, bakery.CustomerBankAccountNumber, bakery.NumberOfOrder);
                 return RedirectToAction(nameof(Index));
             }
             return View(bakery);
@@ -88,7 +86,7 @@ namespace BakeryUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit (int id, [Bind("BakeryProduct,CustomerName,CustomerEmailAddress,CustomerBankAccountNumber,NumberOfOrder")] Bakery bakery)
+        public async Task<IActionResult> Edit (int id, [Bind("CustomerNumber, BakeryProduct,CustomerName,CustomerEmailAddress,NumberOfOrder")] Bakery bakery)
         {
             if (id != bakery.CustomerNumber)
             {

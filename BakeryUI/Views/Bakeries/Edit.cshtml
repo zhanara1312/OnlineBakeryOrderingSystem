@@ -13,7 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CustomerNumber" />
-            
+                <div class="form-group">
                 <label asp-for="BakeryProduct" class="control-label"></label>
                 <select asp-for="BakeryProduct" asp-items="Html.GetEnumSelectList<BakeryProduct>()" class="form-control"></select>
                 <span asp-validation-for="BakeryProduct" class="text-danger"></span>
@@ -30,11 +30,7 @@
                 <input asp-for="CustomerEmailAddress" class="form-control" />
                 <span asp-validation-for="CustomerEmailAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CustomerBankAccountNumber" class="control-label"></label>
-                <input asp-for="CustomerBankAccountNumber" class="form-control" />
-                <span asp-validation-for="CustomerBankAccountNumber" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="NumberOfOrder" class="control-label"></label>
                 <input asp-for="NumberOfOrder" class="form-control" />

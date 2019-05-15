@@ -47,6 +47,11 @@ namespace OnlineBakeryOrderingSystem
             return a1;
         }
 
+        public static void CreateBakery(BakeryProduct bakeryProduct, string customerName, string customerEmailAddress, string customerBankAccountNumber, int numberOfOrder)
+        {
+            throw new NotImplementedException();
+        }
+
         public static IEnumerable<Bakery> GetBakeryOrderForUser(string customerEmailAddress)
         {
             return db.Bakeries.Where(a => a.CustomerEmailAddress == customerEmailAddress);
@@ -61,7 +66,7 @@ namespace OnlineBakeryOrderingSystem
         }
 
         public static Bakery GetBakeryOrderByCustomerNumber
-            (Int32 customerNumber)
+            (int customerNumber)
         {
             var bakery = db.Bakeries.SingleOrDefault(a => a.CustomerNumber == customerNumber);
             if (bakery == null)
