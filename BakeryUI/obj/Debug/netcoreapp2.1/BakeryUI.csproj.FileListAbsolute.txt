@@ -40,3 +40,5 @@ C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\obj\Debug\netcoreap
 C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\obj\Debug\netcoreapp2.1\Razor\Views\Bakeries\Details.g.cshtml.cs
 C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\obj\Debug\netcoreapp2.1\Razor\Views\Bakeries\Edit.g.cshtml.cs
 C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\obj\Debug\netcoreapp2.1\Razor\Views\Bakeries\Index.g.cshtml.cs
+C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\obj\Debug\netcoreapp2.1\Razor\Views\Bakeries\Order.g.cshtml.cs
+C:\Zhanara\Kal academy\C#\Github\OnlBakeryOrdSystem\BakeryUI\obj\Debug\netcoreapp2.1\Razor\Views\Bakeries\Transaction.g.cshtml.cs

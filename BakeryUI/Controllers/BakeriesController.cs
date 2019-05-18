@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,22 +14,15 @@ namespace BakeryUI.Controllers
 {
     [Authorize]
     public class BakeriesController : Controller
-    {
-        private readonly BakeryContext _context;
-
-        public BakeriesController(BakeryContext context)
-        {
-            _context = context;
-        }
-
+    { 
         // GET: Bakeries
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(BakeryOrder.GetBakeryOrderForUser(HttpContext.User.Identity.Name));
+            return View (BakeryOrder.GetBakeryOrderForUser(HttpContext.User.Identity.Name));
         }
 
         // GET: Bakeries/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -55,7 +49,7 @@ namespace BakeryUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create ([Bind("BakeryProduct,CustomerName,CustomerEmailAddress,NumberOfOrder")] Bakery bakery)
+        public IActionResult Create ([Bind("BakeryProduct,CustomerName,CustomerEmailAddress,NumberOfOrder")] Bakery bakery)
         {
             if (ModelState.IsValid)
             {
@@ -65,8 +59,42 @@ namespace BakeryUI.Controllers
             return View(bakery);
         }
 
-        // GET: Bakeries/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+    public IActionResult Order (int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var account = BakeryOrder.GetBakeryOrderByCustomerNumber(id.Value);
+        if (account == null)
+        {
+            return NotFound();
+        }
+            string bakery = null;
+            return View(bakery);
+    }
+    [HttpPost]
+    public IActionResult Order (IFormCollection controls)
+    {
+        var accountNumber = Convert.ToInt32(controls["CustomerNumber"]);
+        var numberOfOrder = Convert.ToInt32(controls["numberOfOrder"]);
+        BakeryOrder.Order(accountNumber, numberOfOrder);
+        return RedirectToAction (nameof(Index));
+    }
+
+    public IActionResult Transaction (int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var transaction = BakeryOrder.GetTransactionsForCustomerNumber(id.Value);
+        return View (transaction);
+    }
+
+    // GET: Bakeries/Edit/5
+    public IActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -86,7 +114,7 @@ namespace BakeryUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit (int id, [Bind("CustomerNumber, BakeryProduct,CustomerName,CustomerEmailAddress,NumberOfOrder")] Bakery bakery)
+        public IActionResult Edit (int id, [Bind("CustomerNumber, BakeryProduct,CustomerName,CustomerEmailAddress,NumberOfOrder")] Bakery bakery)
         {
             if (id != bakery.CustomerNumber)
             {
@@ -101,8 +129,8 @@ namespace BakeryUI.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BakeryExists(bakery.CustomerNumber))
-                    {
+                if (BakeryOrder.GetBakeryOrderByCustomerNumber(bakery.CustomerNumber) == null)
+                {
                         return NotFound();
                     }
                     else
@@ -114,39 +142,8 @@ namespace BakeryUI.Controllers
             }
             return View(bakery);
         }
-
-        // GET: Bakeries/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bakery = await _context.Bakeries
-                .FirstOrDefaultAsync(m => m.CustomerNumber == id);
-            if (bakery == null)
-            {
-                return NotFound();
-            }
-
-            return View(bakery);
-        }
-
-        // POST: Bakeries/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var bakery = await _context.Bakeries.FindAsync(id);
-            _context.Bakeries.Remove(bakery);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool BakeryExists(int id)
-        {
-            return _context.Bakeries.Any(e => e.CustomerNumber == id);
-        }
+               
     }
 }
+
+
