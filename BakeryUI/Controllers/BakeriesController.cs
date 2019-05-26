@@ -14,15 +14,25 @@ namespace BakeryUI.Controllers
 {
     [Authorize]
     public class BakeriesController : Controller
-    { 
+
+    {
+        public string UserName { get; set; }
         // GET: Bakeries
         public IActionResult Index()
-        {
-            return View (BakeryOrder.GetBakeryOrderForUser(HttpContext.User.Identity.Name));
-        }
+     
+            {
+                if (HttpContext != null &&
+                    !string.IsNullOrEmpty
+                    (HttpContext.User.Identity.Name))
+                {
+                    UserName = HttpContext.User.Identity.Name;
+                }
+                return View(BakeryOrder.GetBakeryOrderForUser(UserName));
+            }            
+
 
         // GET: Bakeries/Details/5
-        public IActionResult Details(int? id)
+        public IActionResult Details (int? id)
         {
             if (id == null)
             {
@@ -57,7 +67,7 @@ namespace BakeryUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(bakery);
-        }
+        }  
 
     public IActionResult Order (int? id)
     {

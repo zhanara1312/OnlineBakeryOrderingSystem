@@ -4,7 +4,6 @@ using System.Text;
 
 namespace OnlineBakeryOrderingSystem
 {
-    
     public enum BakeryProduct
     {
         Bread,
@@ -16,9 +15,9 @@ namespace OnlineBakeryOrderingSystem
         /// <summary>
         /// Online Bakery Ordering System. 
         /// </summary>
-        #region Statics
-        public static decimal productItemPrice = 5;
-        #endregion
+       
+            public decimal productItemPrice = 5;
+    
 
             #region Properties
             /// <summary>

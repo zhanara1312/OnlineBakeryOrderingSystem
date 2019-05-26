@@ -19,7 +19,7 @@ namespace OnlineBakeryOrderingSystem
         /// <param name="numberOfOrder">Quantity of the order</param>
         /// <returns>Newly created order</returns>
         /// <exception cref="ArgumentNullException" />
-        public static Bakery CreateOrder
+        public static Bakery CreateBakery
             (BakeryProduct bakeryProduct, string customerName, string customerEmailAddress, string customerBankAccountNumber,
              int numberOfOrder = 0)
         {
@@ -46,14 +46,12 @@ namespace OnlineBakeryOrderingSystem
             db.SaveChanges();
             return a1;
         }
-
-        public static void CreateBakery(BakeryProduct bakeryProduct, string customerName, string customerEmailAddress, string customerBankAccountNumber, int numberOfOrder)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public static IEnumerable<Bakery> GetBakeryOrderForUser(string customerEmailAddress)
         {
+            if (string.IsNullOrEmpty(customerEmailAddress))
+                throw new NullReferenceException();
+
             return db.Bakeries.Where(a => a.CustomerEmailAddress == customerEmailAddress);
         }
 

@@ -13,7 +13,7 @@ namespace OnlineBakeryOrderingSystem
         protected override void OnConfiguring
             (DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=OnlineBakeryOrderingSystem;Integrated Security=True;Connect Timeout=30;");
+            optionsBuilder.UseSqlServer(@"Server=tcp:bakeryuijendbserver.database.windows.net,1433;Initial Catalog=BakeryUIJen_db;Persist Security Info=False;User ID=Jen;Password=Password!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         protected override void OnModelCreating
